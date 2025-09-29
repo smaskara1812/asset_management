@@ -1,0 +1,2 @@
+# This file helps Railway detect Python
+# The actual requirements are in asset_backend/requirements.txt

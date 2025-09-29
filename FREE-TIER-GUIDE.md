@@ -10,10 +10,11 @@
 2. **Click "New Project"**
 3. **Select "Deploy from GitHub repo"**
 4. **Choose your `asset_management` repository**
-5. **Configure deployment:**
-   - **Root Directory**: `asset_backend` (IMPORTANT!)
-   - **Build Command**: `pip install -r requirements.txt`
-   - **Start Command**: `python manage.py migrate && gunicorn asset_backend.wsgi:application --bind 0.0.0.0:$PORT`
+5. **Configure deployment manually:**
+   - **Go to Settings tab in Railway**
+   - **Set Root Directory to**: `asset_backend`
+   - **Set Build Command to**: `pip install -r requirements.txt`
+   - **Set Start Command to**: `python manage.py migrate && python manage.py collectstatic --noinput && gunicorn asset_backend.wsgi:application --bind 0.0.0.0:$PORT`
 
 **Add PostgreSQL Database:**
 1. **Click "New" → "Database" → "PostgreSQL"**
