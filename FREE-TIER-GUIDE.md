@@ -10,7 +10,10 @@
 2. **Click "New Project"**
 3. **Select "Deploy from GitHub repo"**
 4. **Choose your `asset_management` repository**
-5. **Railway auto-detects Django** ✅
+5. **Configure deployment:**
+   - **Root Directory**: `asset_backend` (IMPORTANT!)
+   - **Build Command**: `pip install -r requirements.txt`
+   - **Start Command**: `python manage.py migrate && gunicorn asset_backend.wsgi:application --bind 0.0.0.0:$PORT`
 
 **Add PostgreSQL Database:**
 1. **Click "New" → "Database" → "PostgreSQL"**
