@@ -1,0 +1,58 @@
+#!/bin/bash
+
+echo "🚀 Free Tier Deployment Guide for Asset Management App"
+echo "=================================================="
+
+echo ""
+echo "📋 Step 1: Deploy Backend to Railway (Free)"
+echo "1. Go to https://railway.app"
+echo "2. Sign up with GitHub"
+echo "3. Click 'New Project' → 'Deploy from GitHub repo'"
+echo "4. Select your 'asset_management' repository"
+echo "5. Railway will auto-detect Django"
+echo ""
+
+echo "📋 Step 2: Add PostgreSQL Database"
+echo "1. In Railway dashboard, click 'New' → 'Database' → 'PostgreSQL'"
+echo "2. Copy the DATABASE_URL from the database service"
+echo ""
+
+echo "📋 Step 3: Set Environment Variables in Railway"
+echo "Go to your service → Variables tab and add:"
+echo ""
+echo "SECRET_KEY=$(python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())')"
+echo "DATABASE_URL=postgresql://user:pass@host:port/dbname"
+echo "DJANGO_SETTINGS_MODULE=asset_backend.settings_production"
+echo "DEBUG=False"
+echo "ALLOWED_HOSTS=*.railway.app"
+echo ""
+
+echo "📋 Step 4: Deploy Frontend to Vercel (Free)"
+echo "1. Go to https://vercel.com"
+echo "2. Sign up with GitHub"
+echo "3. Click 'New Project' → Import your repository"
+echo "4. Configure:"
+echo "   - Framework Preset: Vite"
+echo "   - Root Directory: asset_frontend"
+echo "   - Build Command: npm run build"
+echo "   - Output Directory: dist"
+echo ""
+
+echo "📋 Step 5: Set Frontend Environment Variable"
+echo "In Vercel dashboard → Settings → Environment Variables:"
+echo "VITE_API_URL=https://your-railway-backend-url.railway.app/api"
+echo ""
+
+echo "✅ Your app will be live at:"
+echo "Frontend: https://your-project-name.vercel.app"
+echo "Backend: https://your-project-name.railway.app"
+echo ""
+
+echo "💰 Cost: $0/month (within free tier limits)"
+echo ""
+
+echo "🔧 Troubleshooting:"
+echo "- Check Railway logs if backend fails"
+echo "- Check Vercel logs if frontend fails"
+echo "- Verify environment variables are set correctly"
+echo "- Test API endpoints at https://your-backend.railway.app/api/"
